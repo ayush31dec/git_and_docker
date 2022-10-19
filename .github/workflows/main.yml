@@ -1,0 +1,21 @@
+name: FastAPI app
+
+on:
+  push:
+   branches: [ main ]
+  pull_request:
+    branches: [ main ]
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build & Push Image
+    - working-directory: Assignment_2/Task_3/.github/workflows/
+    - run: |
+        echo "${{ secrets.S_KEY }}" | docker login -u "yigdrassil" --password-stdin
+        docker image build -t yigdrassil/fastapi:latest .
+        docker push yigdrassil/fastapi:latest
