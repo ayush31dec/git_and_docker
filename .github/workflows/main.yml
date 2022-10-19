@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build & Push Image
-      working-directory: Assignment_2/Task_3/.github/workflows/
+      working-directory: Task_3/.github/workflows/
       run: |
         echo "${{ secrets.S_KEY }}" | docker login -u "yigdrassil" --password-stdin
         docker image build -t yigdrassil/fastapi:latest .
